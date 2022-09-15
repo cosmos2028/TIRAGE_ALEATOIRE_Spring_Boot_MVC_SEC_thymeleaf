@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+<link th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
+<script type="text/javascript" th:src="@{/JS/jeuxNbAleatoire.js}"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<div class="container" id="pageIndex">
+		<h3>Recherche d'un nombre aleatoire compris entre 1 et 100</h3>
+
+		<form>
+			<div class="d-grid gap-3">
+				<div class="p-2 bg-light border">
+					<div class="row">
+						<div class="col-md-3">Introduisez votre nombre :</div>
+						<div class="col-md-1">
+							<input type="number" class="form-control" id="nbchoix"
+								name="nbchoix" value=1 required>
+						</div>
+						<div class="col-md-3" id="nberreur" name="nberreur"></div>
+					</div>
+				</div>
+				<div class="p-2 bg-light border">
+					<div class="row">
+						<div class="col-md-3">
+							Tentative:<span class="badge bg-secondary" id="nbtentative"
+								name="nbtentative">0</span> fois
+						</div>
+						<div class="col-md-9"></div>
+					</div>
+				</div>
+				<div class="p-2 bg-light border">
+					<div class="row">
+						<div class="col-md-3">
+							<button type="button" class="btn btn-info" id="valider"
+								name="valider" onclick="getInfoFormulaire()">Valider
+								votre choix</button>
+						</div>
+						<div class="col-md-3">
+							<button type="submit" class="btn btn-danger" id="reset"
+								name="reset" onclick="refreshPage()">Tout recommencer</button>
+						</div>
+
+					</div>
+				</div>
+				<div class="p-2 bg-warning border" id="msgerreur" name="msgerreur">
+					Non, ce n'est pas le bon chiffre, refaites un essai.</div>
+			</div>
+
+		</form>
+	</div>
+	<div class="container" id="modalHistorique">
+		<div id="simpleModal" class="modal" tabindex="-1" role="dialog" >
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title text-danger" >C'est fini: le test est limité à 3 coup </h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">Historique</div>
+					<div class="modal-body">choix 1 :<span  id="choix1"
+								name="choix1">0</span> </div>
+					<div class="modal-body">choix 2 :<span  id="choix2"
+								name="choix2">0</span> </div>
+					<div class="modal-body">choix 3 :<span  id="choix3"
+								name="choix3">0</span> </div>
+					<div class="modal-body">Le nombre à trouver: <span  id="nbATrouver"
+								name="nbATrouver">0</span> </div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal" onclick="refreshPage()">Recommencer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div id="simpleModal2MoinsTroisTentative" class="modal" tabindex="-1" role="dialog" >
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title text-success" >BRAVO : vous avez réussit à moins de  3 coup </h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">Historique</div>
+					<div id="divchoix1MoinsTroisTentative" class="modal-body">choix 1 :<span  id="choix1MoinsTroisTentative"
+								name="choix1">0</span> </div>
+					<div id="divchoix2MoinsTroisTentative" class="modal-body">choix 2 :<span  id="choix2MoinsTroisTentative"
+								name="choix2">0</span> </div>
+					<div id="divchoix3MoinsTroisTentative" class="modal-body">choix 3 :<span  id="choix3MoinsTroisTentative"
+								name="choix3">0</span> </div>
+					<div class="modal-body">Le nombre à trouver: <span  id="nbATrouverMoinsTroisTentative"
+								name="nbATrouver">0</span> </div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal" onclick="refreshPage()">Recommencer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
